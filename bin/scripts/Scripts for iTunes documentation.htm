@@ -1,0 +1,642 @@
+<html>
+<head>
+<title>Scripts for iTunes documentation</title>
+<meta name="keywords" content="iTunes, iPod, using iTunes, iTunes controls, mulitmedia keyboard iTunes, iTunes scripts, iTunes VBScript, iTunes JScript, iTunes JavaScript, batch file, command file">
+<meta name="description" content="Documentation on how to use Scripts for iTunes from Maximized Software.">
+</head>
+
+<body>
+<center>
+<h1>Scripts for iTunes</h1>
+<p><em>Copyright 2004 Maximized Software, Inc.<br/>
+All rights reserved.</em><br/>
+Version 2004-12-09-1<br/>
+<a href="http://www.maximized.com/freeware/ScriptsForiTunes/">http://www.maximized.com/freeware/ScriptsForiTunes/</a>
+</p>
+</center>
+
+
+<hr/>
+<h2>Introduction</h2>
+
+<p>This collection of scripts can be used to control iTunes.
+ You can use them from the command line, in a batch (command) file, or you
+ can assign them to the special controls keys on a multimedia keyboard (such
+ as "Play", "Next", or "Previous").</p>
+
+<p>These scripts are free.  If you find them useful, please consider registering at the
+ <a href="http://www.maximized.com/freeware/ScriptsForiTunes/">Maximized Software web site</a>.
+ Registering will let you keep up to date on enhancements to these scripts, as well
+ as provide an opportunity to send us comments on them, or to suggest other iTunes or iPod products.</p>
+
+<p>These scripts only require iTunes (not an iPod). You can always download the latest version
+ of iTunes from <a href="http://www.apple.com/itunes/">the iTunes website</a>.</p>
+
+<p><em>iTunes</em> and <em>iPod</em> are registered trademarks of Apple Computer, Inc.
+ <em>Scripts for iTunes</em> is a trademark of Maximized Software, Inc.</p>
+
+
+<hr/>
+<h2>Installation</h2>
+
+<p>To install Scripts for iTunes, simply run the setup program (setup.exe).  You will
+ be asked where to install the scripts.  Choose any folder that you desire.  By default,
+ setup will place the scripts into a new folder named Scripts that it creates in
+ C:\Program Files\iTunes.</p>
+
+
+<hr/>
+<h2>Using the scripts</h2>
+
+<p>Most people will want to use the scripts to control iTunes via their multimedia keyboard.
+ To do this, open the configuration utility that came with your computer or keyboard.
+ For example, on a Dell computer this utility is called DellTouch, and can be started
+ (under Windows XP) by clicking on the Start button, choosing All Programs, choosing Accessories,
+ choose System Tools, and finally choosing DellTouch.  You may also have a small icon in the
+ Windows system tray that looks like a key cap; clicking on this icon may bring up the configuration
+ utility.</p>
+
+<p>Once you have the configuration utility open, use it to configure the keys that you would
+ like to use to control iTunes.  For example, with the DellTouch utility, you would click on
+ the picture of a button such as Play.  This opens a window which lets you configure this button.
+ Choose the option to specify an application to run, and browse to the desired script.  You may
+ also need to change the text assigned to the button label.</p>
+
+<p>The directions for configuring your system may be different.  For example, Microsoft multimedia
+ keyboards are configured with the Keyboard applet of the Control Panel.</p>
+
+<p>Here are a list of the recommended keyboard mappings to make:</p>
+
+<table border="1">
+
+<tr>
+<td>Key</td>
+<td>Script</td>
+</tr>
+
+<tr>
+<td>Play / Pause</td>
+<td>C:\Program Files\iTunes\Scripts\PlayPause.vbs</td>
+</tr>
+
+<tr>
+<td>Previous</td>
+<td>C:\Program Files\iTunes\Scripts\BackTrack.vbs</td>
+</tr>
+
+<tr>
+<td>Next</td>
+<td>C:\Program Files\iTunes\Scripts\Next.vbs</td>
+</tr>
+
+<tr>
+<td>Stop</td>
+<td>C:\Program Files\iTunes\Scripts\Stop.vbs</td>
+</tr>
+
+</table>
+
+<p>It is <em>not</em> recommended to reconfigure the volume control keys (up, down, mute)
+ to use Scripts for iTunes.  The scripts will affect the volume within iTunes only, and
+ will not affect any other sounds played on your PC.  Instead, you should let the
+ multimedia volume keys continue to operate your entire sound card as they normally do.</p>
+
+<p>To use the scripts from the command line or in a batch file, simply call the script
+ as you would any other program.  See the description of each script below for details
+ on its syntax and any parameters it may support or require.</p>
+
+
+<hr/>
+<h2>Uninstall</h2>
+
+<p>To uninstall Scripts for iTunes, open the Control Panel, choose Add / Remove Programs,
+ then select Scripts for iTunes and click on Remove.</p>
+
+<p>If you have configured keys on your multimedia keyboard to use the scripts, you
+ will need to reconfigure the keys after removing the scripts.</p>
+
+
+<hr/>
+<h2>Script reference</h2>
+
+
+<a name="BackTrack"></a>
+<h3>BackTrack.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script will cause iTunes to restart the current track, or go to the prior track
+ if it is already at (or near) the start of the current track.</p>
+
+<p>Note that you can use the <a href="#Previous">Previous</a> script to always return
+ to the prior track regardless of your position in the current track.</p>
+
+<h4>Syntax:</h4>
+<p>BackTrack</p>
+
+
+<hr/>
+<a name="FastForward"></a>
+<h3>FastForward.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script will cause iTunes to begin fast-forwarding through the current track.
+ To resume playing, run the <a href="#Play">Play</a> or <a href="#PlayPause">PlayPause</a> script.</p>
+
+<h4>Syntax:</h4>
+<p>FastForward</p>
+
+
+<hr/>
+<a name="GetPlayState"></a>
+<h3>GetPlayState.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script is useful for creating batch (command) files.  This script will immediately exit,
+ setting the ERRORLEVEL value to indicate the current play state of iTunes.</p>
+
+<p>Here is a list of the possible values returned by this script:</p>
+
+<table border="1">
+
+<tr>
+<td>ERRORLEVEL</td>
+<td>Description</td>
+</tr>
+
+<tr>
+<td>0</td>
+<td>Stopped</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Playing</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Fast-forwarding</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Rewinding</td>
+</tr>
+
+</table>
+
+<h4>Syntax:</h4>
+<p>GetPlayState</p>
+
+<h4>Example:</h4>
+<p>Here is a sample batch (command) file:</p>
+
+<pre>
+@echo off
+GetPlayState
+if ERRORLEVEL 3 goto Rewinding
+if ERRORLEVEL 2 goto FastForwarding
+if ERRORLEVEL 1 goto Playing
+
+rem Else, must be ERRORLEVEL 0
+echo iTunes is currently stopped or paused.
+goto Done
+
+:Rewinding
+echo iTunes is currently rewinding.
+goto Done
+
+:FastForwarding
+echo iTunes is currently fast-forwarding.
+goto Done
+
+:Playing
+echo iTunes is currently playing.
+
+:Done
+rem End of batch file
+</pre>
+
+
+<hr/>
+<a name="Mute"></a>
+<h3>Mute.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script sets or toggles the muting within iTunes.
+ Note that this is a different muting control than
+ that provided by your sound card (which can be easily
+ accessed by double-clicking on the speaker icon in the
+ system tray).</p>
+
+<p>Normally you will want to keep iTunes set to its maximum
+ volume and adjust your sound card's volume or muting using the
+ normal mapping of your multimedia keyboard.  Therefore,
+ use of this script to control iTunes muting is
+ not recommended (unless you've got a special need in mind).</p>
+
+<p>Also see the <a href="#SetVolume">SetVolume</a>, <a href="#VolumeUp">VolumeUp</a>,
+ and <a href="#VolumeDown">VolumeDown</a> scripts.</p>
+
+<h4>Syntax:</h4>
+<p>Mute [on|off]</p>
+
+<h4>Examples:</h4>
+<p>Here are some examples:</p>
+
+<table border="1">
+
+<tr>
+<td>Example</td>
+<td>Description</td>
+</tr>
+
+<tr>
+<td>Mute</td>
+<td>Toggles iTunes' muting</td>
+</tr>
+
+<tr>
+<td>Mute on</td>
+<td>Turns on muting</td>
+</tr>
+
+<tr>
+<td>Mute off</td>
+<td>Turns off muting (ie, restores sound)</td>
+</tr>
+
+</table>
+
+<p></p>
+
+
+<hr/>
+<a name="Next"></a>
+<h3>Next.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script causes iTunes to go to the next song in the current playlist.</p>
+
+<h4>Syntax:</h4>
+<p>Next</p>
+
+
+<hr/>
+<a name="Pause"></a>
+<h3>Pause.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script pauses iTunes.  Running this script when iTunes is already paused will have no effect.</p>
+
+<h4>Syntax:</h4>
+<p>Pause</p>
+
+
+<hr/>
+<a name="Play"></a>
+<h3>Play.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script makes sure that iTunes is playing. If paused, it will start playing.
+ If fast-forwarding or rewinding, it will resume normal playback.</p>
+
+<h4>Syntax:</h4>
+<p>Play</p>
+
+
+<hr/>
+<a name="PlayFile"></a>
+<h3>PlayFile.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script will cause iTunes play the specified file.
+ The file will also be added to your iTunes "Library" if it isn't already in it.</p>
+
+<p>Be sure to enclose the file name path in quotes.</p>
+
+<h4>Syntax:</h4>
+<p>PlayFile <em>"Full path to file"</em></p>
+
+<h4>Example:</h4>
+<p>PlayFile "C:\My Documents\My Music\Devo\Freedom of Choice\Whip It.mp3"</p>
+
+
+<hr/>
+<a name="PlayPause"></a>
+<h3>PlayPause.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script toggles iTunes between playing and pausing.
+ It can also resume playing if currently fast-forwarding or rewinding.</p>
+
+<h4>Syntax:</h4>
+<p>PlayPause</p>
+
+
+<hr/>
+<a name="PlayPlaylist"></a>
+<h3>PlayPlaylist.vbs</h3>
+
+<h4>Description:</h4>
+<p>rem This script will cause iTunes play the first song in the specified playlist.</p>
+
+<p>The <strong>/playlist:</strong> prefix is optional since there is only one possible parameter.</p>
+
+<p>Be sure to enclose the playlist name in quotes if it contains spaces.</p>
+
+<h4>Syntax:</h4>
+<p>PlayPlaylist [/playlist:]<em>"Name of playlist"</em></p>
+
+<h4>Examples:</h4>
+<p>PlayPlaylist "5 stars"</p>
+<p>PlayPlaylist /playlist:"5 stars"</p>
+
+
+<hr/>
+<a name="PlaySong"></a>
+<h3>PlaySong.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script will cause iTunes play the specified song. You must specify the song name.
+ In addition, you can also specify the artist or album if desired.</p>
+
+<p>If you only specify the song name, then you do not need to use the <strong>/song:</strong> prefix.
+ But if you choose to also specify artist and/or album, then each parameter needs to be prefixed.</p>
+
+<p>If the desired resides in several different playlists, you can control which
+ playlist is selected by using the <strong>/playlist:</strong> parameter.  If you
+ do not specify a playlist name, then the song will be played from the normal Library.
+ If you specify a playlist, then the song will be played from the specified playlist,
+ and when the song has finished then the specified playlist will continue playing.</p>
+
+<p>Note that this script supports partial matches, so several tracks might
+ match the song, album, or artist name.  You can specify as many parameters as necessary
+ to indicate which specific track you want to play.</p>
+
+<h4>Syntax:</h4>
+<p>PlaySong [/song:]<em>"Name of song"</em>
+ [/album:<em>"Name of album"</em>]
+ [/artist:<em>"Name of artist"</em>]
+ [/playlist:<em>"Name of playlist"</em>]
+</p>
+
+<p>Be sure to enclose the names in quotes if they include spaces.</p>
+
+<h4>Examples:</h4>
+<p>PlaySong "Whip It"</p>
+<p>PlaySong /song:"Whip It"</p>
+<p>PlaySong /song:"Whip It" /album:"Freedom of Choice"</p>
+<p>PlaySong /song:"Whip It" /artist:"Devo"</p>
+<p>PlaySong /song:"Whip It" /album:"Freedom of Choice" /artist:Devo</p>
+<p>PlaySong /song:"Whip It" /album:"Freedom of Choice" /artist:"Devo"</p>
+<p>PlaySong /song:"Whip It" /album:"Freedom of Choice" /artist:"Devo" /playlist:"5 stars"</p>
+</p>
+
+
+<hr/>
+<a name="Previous"></a>
+<h3>Previous.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script tells iTunes to play the previous track.
+ Note that this will always move to the previous track,
+ regardless of the position within the current track.
+ You can use the script <a href="#BackTrack">BackTrack</a> to use the "back track"
+ feature of iTunes, which restarts the current track if you're
+ at least a few seconds into it, or goes to the previous track
+ if you're within the first few seconds of the current track.
+</p>
+
+<h4>Syntax:</h4>
+<p>Previous</p>
+
+
+<hr/>
+<a name="Rewind"></a>
+<h3>Rewind.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script causes iTunes to rewind through the current track.
+ To resume playing, run the <a href="#Play">Play</a> or <a href="#PlayPause">PlayPause</a> script.</p>
+</p>
+
+<h4>Syntax:</h4>
+<p>Rewind</p>
+
+
+<hr/>
+<a name="ScriptEngineCache-Start"></a>
+<h3>ScriptEngineCache-Start.vbs</h3>
+
+<h4>Description:</h4>
+<p>You may want to use this script if you find that your system sometimes takes a while to run
+ the script that you have associated with a key on a multimedia keyboard.</p>
+
+<p>This script runs silently in a continuous loop, thus keeping the Windows Script Host loaded in
+ memory.  On some systems, this might make subsequent scripts mapped to the keys on a multimedia
+ keyboard execute more quickly because the Windows Script Host is already loaded in memory.</p>
+
+<p>This script works by setting a flag in the registry, then checking for the existence of the
+ flag every five seconds.  This script sleeps in-between checking the registry, so it should have
+ no noticeable effect on system performance.</p>
+
+<p>To stop this script from running, just run the
+ <a href="#ScriptEngineCache-Stop">ScriptEngineCache-Stop</a> script.
+ The ScriptEngineCache-Stop script will clear the flag in the registry which
+ tells the ScriptEngineCache-Start script to keep running.</p>
+
+<p>Please note that some utilities may warn you that this script is attempting to
+ write to the registry.  You may need to tell these utilities that it is okay for
+ this script to execute normally.</p>
+
+<p>You may want to add a shortcut to this script to your Startup menu to ensure that it is
+ always running.</p>
+
+<h4>Syntax:</h4>
+<p>ScriptEngineCache-Start</p>
+
+
+<hr/>
+<a name="ScriptEngineCache-Stop"></a>
+<h3>ScriptEngineCache-Stop.vbs</h3>
+
+<h4>Description:</h4>
+<p>Running this script will cause the <a href="#ScriptEngineCache-Start">ScriptEngineCache-Start</a> script
+ to stop running.</p>
+
+<p>See the <a href="#ScriptEngineCache-Start">ScriptEngineCache-Start</a> script for more details.</p>
+
+<p>Please note that some utilities may warn you that this script is attempting to
+ write to the registry.  You may need to tell these utilities that it is okay for
+ this script to execute normally.</p>
+
+<h4>Syntax:</h4>
+<p>ScriptEngineCache-Stop</p>
+
+
+<hr/>
+<a name="SetVolume"></a>
+<h3>SetVolume.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script sets the volume within iTunes.
+ Note that this is a different volume control than
+ that provided by your sound card (which can be easily
+ accessed by double-clicking on the speaker icon in the
+ system tray).</p>
+
+<p>Normally you will want to keep iTunes set to its maximum
+ volume and adjust your sound card's volume using the
+ normal mapping of your multimedia keyboard.  Therefore,
+ use of this script to control the iTunes volume is
+ not recommended (unless you've got a special need in mind).</p>
+
+<p>The iTunes volume ranges from 0 to 100. You can use this script
+ with a given number to set the volume at a specific level, or precede
+ the number with a + or - to indicate a relative amount of change.</p>
+
+<p>Also see the <a href="#VolumeUp">VolumeUp</a> and <a href="#VolumeDown">VolumeDown</a> scripts.</p>
+
+<h4>Syntax:</h4>
+<p>SetVolume [+|-]<em>number</em></p>
+
+<h4>Examples:</h4>
+<p>Here are some examples:</p>
+
+<table border="1">
+
+<tr>
+<td>Example</td>
+<td>Description</td>
+</tr>
+
+<tr>
+<td>SetVolume 0</td>
+<td>Sets volume to "off" (but not the same as "mute")</td>
+</tr>
+
+<tr>
+<td>SetVolume 100</td>
+<td>Sets volume to highest possible value</td>
+</tr>
+
+<tr>
+<td>SetVolume 50</td>
+<td>Sets volume to 50 (ie, half)</td>
+</tr>
+
+<tr>
+<td>SetVolume -10</td>
+<td>Turns volume down by 10 points</td>
+</tr>
+
+</table>
+
+<p></p>
+
+
+<hr/>
+<a name="Stop"></a>
+<h3>Stop.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script stops iTunes, regardless of its current mode.
+ Note that "stopping" means that iTunes will stop any playback
+ and return to the beginning of the current track.
+ Of course, this is different than pausing.
+</p>
+
+<h4>Syntax:</h4>
+<p>Stop</p>
+
+
+<hr/>
+<a name="VolumeDown"></a>
+<h3>VolumeDown.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script decrements the volume within iTunes by 10 points.
+ Note that this is a different volume control than
+ that provided by your sound card (which can be easily
+ accessed by double-clicking on the speaker icon in the
+ system tray).</p>
+
+<p>Normally you will want to keep iTunes set to its maximum
+ volume and adjust your sound card's volume using the
+ normal mapping of your multimedia keyboard.  Therefore,
+ use of this script to control the iTunes volume is
+ not recommended (unless you've got a special need in mind).</p>
+
+<p>Also, see the <a href="#SetVolume">SetVolume</a> script.</p>
+
+<h4>Syntax:</h4>
+<p>VolumeDown</p>
+
+
+<hr/>
+<a name="VolumeUp"></a>
+<h3>VolumeUp.vbs</h3>
+
+<h4>Description:</h4>
+<p>This script increments the volume within iTunes by 10 points.
+ Note that this is a different volume control than
+ that provided by your sound card (which can be easily
+ accessed by double-clicking on the speaker icon in the
+ system tray).</p>
+
+<p>Normally you will want to keep iTunes set to its maximum
+ volume and adjust your sound card's volume using the
+ normal mapping of your multimedia keyboard.  Therefore,
+ use of this script to control the iTunes volume is
+ not recommended (unless you've got a special need in mind).</p>
+
+<p>Also, see the <a href="#SetVolume">SetVolume</a> script.</p>
+
+<h4>Syntax:</h4>
+<p>VolumeUp</p>
+
+
+
+<hr/>
+<h2>Scheduling an event</h2>
+
+<p>Want to wake up to iTunes?  You can use Windows' Scheduled Tasks feature
+ to play a song or playlist at any desired time.  Here's how:</p>
+
+<ol>
+
+<li><p>Open Control Panel, and choose Scheduled Tasks.</p>
+
+<li><p>Choose Add Scheduled Task.</p>
+
+<li><p>In the window where you select the program to run, click on the Browse... button.
+ Navigate to the desired script (such as <a href="#PlaySong">PlaySong</a>
+ or <a href="#PlayPlaylist">PlayPlaylist</a>).  These scripts are normally
+ installed in a folder such as C:\Program Files\iTunes\Scripts.
+</p>
+
+<li><p>Give your task a name, and fill out the information that tells Windows when
+ to run this task.  Enter a user name and password if necessary.</p>
+
+<li><p>On the final window of the Scheduled Task Wizard, make sure that the checkbox
+ labelled "Open advanced properties for this task when I click Finish" is checked, then
+ click Finish.</p>
+
+<li><p>In the properties window for this task, append any necessary parameters to
+ the end of the Run command (such as song name or playlist name).  Be sure to enclose
+ in quotes any parameter values which include spaces (as described in the documentation
+ above).</p>
+
+</ol>
+
+<p>You can also change the Run command parameters for any scheduled task at any time
+ by opening Control Panel, choosing Scheduled Tasks, then right-clicking on the task
+ and choosing Properties.</p>
+
+
+<hr/>
+<p><em>Thank you for using Scripts for iTunes!</em></p>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+// Author: Thaddeus Diamond (diamond@cs.yale.edu)
+//
+// The following is a Protocol Buffer representation of the Kinect data
+// so that it can be serialized and passed to any arbitrary representation
+// (i.e. Python, C++ on Linux, Java, etc.)
+
+message KinectInterpProto {
+  repeated bool active_skeletons = 1;
+}
